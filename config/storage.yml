@@ -21,6 +21,13 @@ local:
 #   credentials: <%= Rails.root.join("path/to/gcs.keyfile") %>
 #   bucket: your_own_bucket
 
+cloudinary:
+  service: Cloudinary
+  cloud_name: "portal-fronteiri-o"
+  api_key: "878763589699628"
+  api_secret: "uO2VaoFHUvFQDpTLiOiiDC_b-5E"
+  secure: true
+
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
 #   service: AzureStorage
