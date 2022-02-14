@@ -39,7 +39,7 @@ class Job < ApplicationRecord
   scope :available, -> { where('expiration_date > ?', Date.today) }
   scope :expirated, -> { where('expiration_date < ?', Date.today) }
 
-  scope :daily,     -> { where('created_at = ?', Date.today) }
+  scope :daily,     -> { time_lapse(:day) }
   scope :weekly,    -> { time_lapse(:week) }
   scope :monthly,   -> { time_lapse(:month) }
   scope :yearly,    -> { time_lapse(:year) }
