@@ -1,0 +1,75 @@
+<div class="job">
+	<div class='panel panel-default job-block'>
+		<div class='panel-body'>
+			<div class='col-md-9'>
+				<h5 class='uppercase bold'>
+					<%= image_tag(has_avatar?(job.company), class: 'sm-logo') %>
+					<%= job.company_name %> /
+					<small>Expira em <%= job.expiration_date.strftime('%d/%m/%Y') %></small>
+				</h5>
+				<h3 class='title bold'><%= link_to job.title, job_path(job), class: 'no-border' %></h3>
+				<ul class="list-unstyled list-inline">
+					<li>
+						<i class="fa-solid fa-location-pin"></i>
+						<%= job.modality %>
+					</li>
+					<li>
+						<i class="fa-solid fa-file"></i>
+						<%= job.hiring_type %></li>
+					<li>
+						<i class="fa-solid fa-clock"></i>
+						<%= job.period %>		
+					</li>
+					<li>
+						<span class='badge'>
+							<i class="fa-solid fa-clock"></i>
+							<%= job.status %>
+						</span>
+					</li>
+				</ul>
+				<p>
+					<%= job.location %>		
+				</p>
+			</div>
+
+			<div class="col-md-3">
+				<% if owner?(job) %>
+					<% if current_company %>
+						<ul class="list-unstyled text-right">
+							<li>
+								<% unless expirated_job?(job) then %>
+									<%= link_to expire_job_path(job), 
+										method: :post,
+										class: 'btn btn-default btn-lg top' do %>
+											Expirar Vaga
+									<% end %>
+								<% else %>
+									<%= link_to active_job_path(job),
+										method: :post,
+										class: 'btn btn-default btn-lg top' do %>
+											Renovar Vaga
+									<% end %>
+								<% end %>
+							</li>
+							<li>
+								<%= link_to edit_job_path(job),
+									class: 'btn btn-default btn-lg top' do %>
+										<i class="fa-solid fa-pen-to-square"></i> Editar Vaga
+								<% end %>
+							</li>
+							<li>
+								<%= link_to job_path(job),
+									method: :delete,
+									data: { confirm: 'Realmente deseja remover esta vaga?' },
+									style: 'margin-top: 1px;',
+									class: 'btn btn-danger btn-lg top' do %>
+	                	<i class="fa-solid fa-trash"></i> Remover Vaga
+								<% end %>
+							</li>
+						</ul>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

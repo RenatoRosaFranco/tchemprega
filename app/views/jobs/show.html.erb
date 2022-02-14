@@ -1,0 +1,38 @@
+<%= provide :title, '' %>
+<%= provide :description, '' %>
+<%= provide :keywords, '' %>
+<%= provide :ld_json, {} %>
+
+<section id="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div id="heading">
+					<%= render partial: 'job', locals: { job: @job } %>
+				</div>
+
+				<div class='panel panel-default'>
+					<div class='panel-body'>
+						<div id="content"><br>
+							<h4 class='bold'>Detalhes da vaga</h4>
+							<%= raw(@job.description) %>
+						</div>
+
+						<div id="apply"><br>
+							<h4 class='bold'>Para candidatar-se</h4>
+							<% if !expirated_job?(@job) %>
+								<% if is_a_link?(@job.apply_path) then %>
+									<%= link_to 'Ir para o link da vaga', @job.apply_path, target: '_blank' %>
+								<% else %>
+									<%= link_to 'Enviar meu curriculo', "mailto:#{@job.apply_path}", target: '_blank' %>
+								<% end %>
+							<% else %>
+								<p>A vaga foi expirada e infelizmente não esta mais recebendo candidaturas.</p>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

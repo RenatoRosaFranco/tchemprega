@@ -1,0 +1,76 @@
+<%= form_for(job, html: { id: 'pfForm' }) do |f| %>
+	
+	<% if job.errors.any? %>
+		<div class="alert alert-danger">
+			<h2><%= pluralize(job.errors.count, 'error') %> 
+			impedem que esta vaga seja salva.</h2>
+
+			<ul>
+				<%= job.errors.full_messages.each do |msg| %>
+				  <li><%= error %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div class="field">
+		<%= f.label :title, 'Titulo da Vaga' %>
+		<%= f.text_field :title, class: 'form-control', required: 'required',
+		placeholder: 'Digite o titulo', autocomplete: 'off' %>
+	</div>
+
+	<div class="field">
+		<%= f.label :hiring_type, 'Tipo de Contratação' %>
+		<%= f.select(:hiring_type, {
+      'CLT' => 'CLT',
+      'PJ' => 'PJ',
+      'Temporário' => 'Temporário',
+      'Freelancer' => 'Freelancer'
+		}, 
+		{ prompt: 'Selecionar Tipo de contratação' },
+		{ class: 'form-control', required: 'required'}) %>
+	</div>
+
+	<div class="field">
+		<%= f.label :modality, 'Modalidade' %>
+		<%= f.select(:modality, {
+      'Presencial' => 'Presencial',
+      'Remoto' 		 => 'Remoto'
+		}, 
+		{ prompt: 'Selecionar Modalidade' },
+		{ class: 'form-control', required: 'required'}) %>
+	</div>
+
+	<div class="field">
+		<%= f.label :period, 'Periodo' %>
+		<%= f.select(:period, {
+      'Tempo Integral' => 'Integral',
+      'Meio Periodo'   => 'Parcial'
+		}, 
+		{ prompt: 'Selecionar Modalidade' },
+		{ class: 'form-control', required: 'required'}) %>
+	</div>
+
+	<div class="field">
+		<%= f.label :description, 'Descrição da Vaga' %>
+		<%= f.text_area :description, class: 'form-control',
+		placeholder: 'Digite a descrição', autocomplete: 'off', id: 'pfeditor',
+		value: (job.new_record?) ? load_job_description : job.description %>
+	</div>
+
+	<div class="field">
+		<%= f.label :location, 'Localização' %>
+		<%= f.text_field :location, class: 'form-control', required: 'required',
+		placeholder: 'Digite a localização', autocomplete: 'off' %>
+	</div>
+
+	<div class="field">
+		<%= f.label :apply_path, 'Para candidatar-se' %>
+		<%= f.text_field :apply_path, class: 'form-control', required: 'required',
+		placeholder: 'Email da empresa ou endereço da vaga', autocomplete: 'off' %>
+	</div>
+
+	<div class="actions"><br />
+		<%= f.submit nil, class: 'btn btn-primary btn-lg top' %>
+	</div>
+<% end %>

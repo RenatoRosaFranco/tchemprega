@@ -1,0 +1,61 @@
+<section id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4 col-md-offset-4">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h2 class='bold text-center'>Sign up</h2>
+              <hr>
+
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+              html: { id: 'pfForm' }) do |f| %>
+                <%= render "devise/shared/error_messages", resource: resource %>
+
+                <div class="field">
+                  <%= f.label :name, 'Nome da Empresa' %>
+                  <%= f.text_field :name, class: 'form-control', required: 'required',
+                  placeholder: 'Digite o nome da empresa', autocomplete: 'off' %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :document, 'CNPJ' %>
+                  <%= f.text_field :document, class: 'form-control', required: 'required',
+                  placeholder: 'Digite o CNPJ', autocomplete: 'off' %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :email, 'Email' %><br />
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email",
+                  class: 'form-control', required: 'required', placeholder: 'Digite o e-mail' %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :password, 'Senha' %>
+                  <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
+                  <%= f.password_field :password, autocomplete: "new-password",
+                  class: 'form-control', required: 'required', placeholder: 'Senha' %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :password_confirmation, 'Confirmar Senha' %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password",
+                  class: 'form-control', required: 'required', placeholder: 'Digite a senha' %>
+                </div>
+
+                <div class="actions"><br />
+                  <%= f.submit "Sign up", class: 'btn btn-primary btn-lg top',
+                  style: 'width: 100%; background-color: #00285d; border: 1px solid #00285d;' %>
+                </div>
+              <% end %>
+
+              <%= render "devise/shared/links" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,94 @@
+<%= provide :title, '' %>
+<%= provide :description, '' %>
+<%= provide :keywords, '' %>
+<%= provide :ld_json, {} %>
+
+<%= render partial: 'shared/presenter' %>
+
+<section id="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div id="filtering" style='padding-top: 10px; padding-bottom: 20px;'>
+					<h4 class='bold'>
+					<span class='badge'>
+						<i class="fa-solid fa-briefcase-blank"></i>.	
+					</span>
+					Pesquisar por:</h4>
+					<ul class="list-unstyled list-inline">
+						<li>
+							<%= link_to company_jobs_path do %>
+								<span class="badge pf-span">
+									Minhas vagas
+								</span>
+							<% end %>
+						</li>
+						<li>
+							<%= link_to jobs_path do %>
+								<span class='badge pf-span'>
+									<%= Job.available.count %> Vagas ativas
+								</span>
+							<% end %>
+						</li>
+						<li>
+							<%= link_to expirated_jobs_path do %>
+								<span class="badge pf-span">
+									<%= Job.expirated.count %> Vagas expiradas
+								</span>
+							<% end %>
+						</li>
+						<li>
+							<span class='badge pf-span'>
+								<%= Job.available.count %> total vagas
+							</span>
+						</li>
+						<li class='pull-right'>
+							<%= link_to yearly_jobs_path do %>
+								<span class='badge pf-span'>
+									Anual
+								</span>
+							<% end %>							
+						<li class='pull-right'>
+							<%= link_to monthly_jobs_path do %>
+								<span class='badge pf-span'>
+									Mensal
+								</span>
+							<% end %>
+						</li>
+						<li class='pull-right'>
+							<%= link_to weekly_jobs_path do %>
+								<span class='badge pf-span'>
+									Semanal
+								</span>
+							<% end %>
+						</li>	
+						<li class='pull-right'>
+							<%= link_to daily_jobs_path do %>
+								<span class='badge pf-span'>
+									Diaria
+								</span>
+							<% end %>
+						</li>	
+					</ul>
+				</div>
+
+				<br>
+				<div id="job-list">
+					<%= render @jobs %>
+
+					<% if @jobs.empty? %>
+						<p class='well text-center'>
+							Desculpe, Nenhuma vaga foi adicionada ainda.
+						</p>
+					<% end %>
+				</div>
+
+				<div id="pagination">
+					<div class='text-center'>
+						<%= paginate(@jobs) %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
