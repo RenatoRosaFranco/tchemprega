@@ -4,9 +4,11 @@
 #
 #  id                     :integer          not null, primary key
 #  avatar                 :string
+#  deleted_at             :datetime
 #  document               :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  location               :string
 #  name                   :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
@@ -17,6 +19,7 @@
 #
 # Indexes
 #
+#  index_companies_on_deleted_at            (deleted_at)
 #  index_companies_on_email                 (email) UNIQUE
 #  index_companies_on_reset_password_token  (reset_password_token) UNIQUE
 #

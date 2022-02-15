@@ -1,0 +1,28 @@
+<%= provide :title, '' %>
+<%= provide :description, '' %>
+<%= provide :keywords, '' %>
+<%= provide :ld_json, {} %>
+
+<%= render partial: 'shared/company_presenter' %>
+
+<section id="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div id="company-list" style="margin-top: 30px;">
+					<div class='row'>
+						<%= render @companies %>
+					</div>
+				</div>
+
+				<div id="pagination">
+					<div class='row'>
+						<div class='text-center'>
+							<%= paginate(@companies) %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

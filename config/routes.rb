@@ -13,6 +13,23 @@ Rails.application.routes.draw do
   # Application
   # @implemented
   root to: 'jobs#index'
+  
+  # Companies
+  # @implemented
+  resources :companies, only: [:index, :show] do
+
+    # On collection
+    # @implemented
+    collection do
+
+      # Search
+      # @implemented
+      match 'search' => 'companies#search', via: [:get, :post], as: :search
+    end
+  end
+
+  # Jobs
+  # @implemented
   resources :jobs do
 
     # On member
