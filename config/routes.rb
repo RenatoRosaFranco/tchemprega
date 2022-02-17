@@ -57,4 +57,10 @@ Rails.application.routes.draw do
       match 'search'  => 'jobs#search', via: [:get, :post], as: :search
     end
   end
+
+  # Dashboard
+  # @implemented
+  namespace :dashboard, constraint: { subdomain: 'api' } do
+    get '/' => 'home#index', as: :dashboard
+  end
 end
