@@ -17,7 +17,6 @@ OccupationArea.create(
 		{ name: 'Gráfica' },
 		{ name: 'Administrativo' },
 		{ name: 'Limpeza' },
-		{ name: 'Marketing' },
 		{ name: 'Recursos Humanos' },
 		{ name: 'Educação' },
 		{ name: 'Logística' },
@@ -28,6 +27,20 @@ OccupationArea.create(
 		{ name: 'Informática' },
 		{ name: 'Financeiro' },
 		{ name: 'Saúde' },
+    { name: 'Programação' },
+    { name: 'Gestão de Tecnologia' },
+    { name: 'Front-end' },
+    { name: 'Ciência de Dados' },
+    { name: 'DevOps' },
+    { name: 'Mobile' },
+    { name: 'Produto' },
+    { name: 'Requisitos' },
+    { name: 'Design/UX' },
+    { name: 'Inovação e Gestão' },
+    { name: 'Agile' },
+    { name: 'Cyber Security' },
+    { name: 'Customer Experience' },
+    { name: 'Marketing Digital' },
 		{ name: 'Serviços Pessoais' }
 	]
 )
