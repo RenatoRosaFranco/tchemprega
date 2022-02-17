@@ -1,0 +1,20 @@
+<div class="col-md-4">
+  <div class="panel panel-default">
+    <div class="panel-heading text-center">
+      <%= image_tag(has_avatar?(company), width: 120, height: 114) %>
+    </div>
+    <div class="panel-body">
+      <ul class="list-unstyled list-inline">
+        <li><p><%= link_to truncate(company.name, length: 15), company_path(company) %></p></li>
+        <li class='pull-right'>
+          <%= link_to companies_path do %>
+            <p class='bold'>
+              <%= company.jobs.available.count %>
+              Vagas
+            </p>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

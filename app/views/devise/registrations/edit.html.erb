@@ -10,7 +10,8 @@
               </h2>
               <hr>
 
-              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'pfForm', method: :put }) do |f| %>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: 
+              { id: 'pfForm', method: :put }) do |f| %>
                 <%= render "devise/shared/error_messages", resource: resource %>
 
                 <div class="field">
@@ -27,7 +28,7 @@
                 <div class="field">
                   <%= f.label :document, 'CNPJ' %>
                   <%= f.text_field :document, class: 'form-control', required: 'required',
-                  placeholder: 'Digite o CNPJ', autocomplete: 'off' %>
+                  placeholder: 'Digite o CNPJ', autocomplete: 'off', id: 'company_cnpj' %>
                 </div>
 
                 <div class="field">
@@ -43,7 +44,7 @@
                 <div class="field">
                   <%= f.label :phone, 'Telefone' %>
                   <%= f.phone_field :phone, class: 'form-control', required: 'required',
-                  placeholder: 'Digite o telefone', autocomplete: 'off' %>
+                  placeholder: 'Digite o telefone', autocomplete: 'off', id: 'phone' %>
                 </div>
 
                 <div class="field">
@@ -67,7 +68,7 @@
                 <div class="field">
                   <%= f.label :password, 'Senha' %> <i>(leave blank if you don't want to change it)</i><br />
                   <%= f.password_field :password, autocomplete: "new-password",
-                  class: 'form-control', required: 'required', placeholder: 'Digite a senha' %>
+                  class: 'form-control', placeholder: 'Digite a senha' %>
                   <% if @minimum_password_length %>
                     <em><%= @minimum_password_length %> characters minimum</em>
                   <% end %>
@@ -76,7 +77,7 @@
                 <div class="field">
                   <%= f.label :password_confirmation, 'Confirmar Senha' %><br />
                   <%= f.password_field :password_confirmation, autocomplete: "new-password",
-                  class: 'form-control', required: 'required', placeholder: 'Confirme sua senha' %>
+                  class: 'form-control', placeholder: 'Confirme sua senha' %>
                 </div>
 
                 <div class="field">

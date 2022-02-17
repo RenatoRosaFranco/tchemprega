@@ -1,0 +1,63 @@
+<%= provide :title, '' %>
+<%= provide :description, '' %>
+<%= provide :keywords, '' %>
+<%= provide :ld_json, {} %>
+
+<%= render partial: 'shared/presenter' %>
+
+<section id="highlighted-companies">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-10 col-md-offset-1">
+          <h4 class='bold uppercase text-center'>Empresas em destaque</h4>
+          <br />
+
+          <%= render partial: 'company', collection: @companies, as: :company %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="new-job">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class='bold text-center'>Está recrutando?</h3>
+        <p class='text-center'>Encontre a pessoa perfeira para a sua vaga!</p>
+        <br />
+
+        <div class="text-center">
+          <%= link_to new_job_path, 
+            class: 'btn btn-primary btn-lg top' do %>
+              Publicar Vaga
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="latests-jobs">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12"><br /><br />
+        <div class="col-md-10 col-md-offset-1">
+          <%= render @jobs %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-center">
+          <%= link_to jobs_path,
+            class: 'btn btn-default btn-lg top' do %>
+              Visualizar todas as vagas
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

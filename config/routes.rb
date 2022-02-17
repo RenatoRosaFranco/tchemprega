@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # Application
   # @implemented
-  root to: 'jobs#index'
+  root to: 'home#index'
   
   # Companies
   # @implemented

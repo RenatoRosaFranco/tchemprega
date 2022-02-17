@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.inputmask.bundle.min
 //= require bootstrap
 //= require rails-ujs
 //= require activestorage
@@ -21,5 +22,9 @@ $(function(){
 		selector: '#pfeditor',
 		plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
 		toolbar_mode: 'floating'
-	})
+	});
+
+  $('#user_cpf').inputmask({ mask: '999.999.999.99' })
+  $('#company_cnpj').inputmask({ mask: '99.999.999/9999-99' });
+  $('#phone').inputmask({ mask: '(99) 99999-9999' });
 })

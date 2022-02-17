@@ -70,6 +70,18 @@
 		placeholder: 'Digite a localização', autocomplete: 'off' %>
 	</div>
 
+  <div class="field">
+    <%= f.label :state_id, 'Estado' %>
+    <%= f.collection_select(:state_id, State.where(name: 'Rio Grande do Sul'), :id, :name,
+    { prompt: 'Selecionar Estado' }, { class: 'form-control', required: 'required' }) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city_id, 'Cidade' %>
+    <%= f.collection_select(:city_id, City.where(name: 'São Borja'), :id, :name,
+    { prompt: 'Selecionar Cidade' }, { class: 'form-control', required: 'required' }) %>
+  </div>
+
 	<div class="field">
 		<%= f.label :apply_path, 'Para candidatar-se' %>
 		<%= f.text_field :apply_path, class: 'form-control', required: 'required',
