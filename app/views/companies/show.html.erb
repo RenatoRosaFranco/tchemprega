@@ -3,11 +3,111 @@
 <%= provide :keywords, '' %>
 <%= provide :ld_json, {} %>
 
+<section id="presenter">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-12">
+						<%= link_to companies_path, 
+							class: 'btn btn-primary btn-lg top' do %>
+							<i class="fa-solid fa-circle-chevron-left"></i>
+							Voltar
+						<% end %>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="list-unstyled">
+							<li><h2 class='bold'><%= @company.name %></h2></li>
+							<ul class="list-unstyled list-inline">
+								<li>
+									<p>
+										<i class="fa-solid fa-location-dot"></i>
+										<%= @company.location %>
+									</p>
+								</li>
+								<li>
+									<p>
+										<i class="fa-solid fa-earth-americas"></i>
+										<%= @company.website %></li>
+									</p>
+							</ul>
+						</ul>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
 <section id="content">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				
+				<div class="col-md-8"><br />
+
+					<ul class="nav nav-tabs" role="tablist">
+				    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Descrição da Empresa</a></li>
+				    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Vagas (<%= @company.jobs.available.count %>)</a></li>
+				  </ul>
+
+				  <div class="tab-content">
+				    <div role="tabpanel" class="tab-pane active" id="home">
+				    	<%= @company.about %>
+				    </div>
+				    
+				    <div role="tabpanel" class="tab-pane" id="profile">
+				    	<br />
+
+				    	<div id="job-list">
+				    		<%= render @jobs %>
+				    	</div>
+
+				    	<div id="pagination">
+				    		<%= paginate(@jobs) %>
+				    	</div>
+				    </div>
+				  </div>
+				</div>
+
+				<div class="col-md-4">
+					<div id="jobAlertForm">
+						<div class="panel panel-default" style='margin-top: -50px;'>
+							<div class="panel-body">
+								<h4 class='text-center bold'>Envie-me vagas
+									de <%= @company.name %></h4>
+									<br>
+
+									<%= form_for(:newsletter) do |f| %>
+
+										<div class="field">
+											<%= f.text_field :email, class: 'form-control',
+											required: 'required', placeholder: 'Digite o e-mail',
+											autocomplete: 'off' %>
+										</div>
+ 
+										<div class="field"><br />
+											<%= f.select(:type, {
+												'Diario'  => 'dailly',
+												'Semanal' => 'weekly',
+												'Mensal'  => 'monthly'
+											}, 
+											{ prompt: 'Selecionar Plano' }, 
+											{ class: 'form-control', required: 'required' }) %>
+										</div>
+
+										<div class="field"><br />
+											<%= f.submit 'Criar alerta', 
+												class: 'btn btn-primary btn-lg top',
+												style: 'width: 100%;' %>
+										</div>
+									<% end %>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

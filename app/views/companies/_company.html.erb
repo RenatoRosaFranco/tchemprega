@@ -5,10 +5,15 @@
 		</div>
 		<div class="panel-body">
 			<ul class="list-unstyled list-inline">
-				<li><p><%= truncate(company.name, length: 15) %></p></li>
-				<li class='pull-right'><p class='bold'><%= company.jobs.available.count %>
-					Vagas
-				</p></li>
+				<li><p><%= link_to truncate(company.name, length: 15), company_path(company) %></p></li>
+				<li class='pull-right'>
+					<%= link_to companies_path do %>
+						<p class='bold'>
+							<%= company.jobs.available.count %>
+							Vagas
+						</p>
+					<% end %>
+				</li>
 			</ul>
 		</div>
 	</div>

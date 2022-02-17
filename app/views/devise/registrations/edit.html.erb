@@ -41,6 +41,18 @@
                 <% end %>
 
                 <div class="field">
+                  <%= f.label :state_id, 'Estado' %>
+                  <%= f.collection_select(:state_id, State.order(:name), :id, :name,
+                  { prompt: 'Selecionar Estado' }, { class: 'form-control', required: 'required' }) %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :city_id, 'Cidade' %>
+                  <%= f.collection_select(:city_id, City.order(:name), :id, :name,
+                  { prompt: 'Selecionar Cidade' }, { class: 'form-control', required: 'required' }) %>
+                </div>
+
+                <div class="field">
                   <%= f.label :password, 'Senha' %> <i>(leave blank if you don't want to change it)</i><br />
                   <%= f.password_field :password, autocomplete: "new-password",
                   class: 'form-control', required: 'required', placeholder: 'Digite a senha' %>

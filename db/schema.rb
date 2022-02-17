@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_15_124259) do
+ActiveRecord::Schema.define(version: 2022_02_17_151932) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2022_02_15_124259) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.boolean "capital"
+    t.integer "state_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["state_id"], name: "index_cities_on_state_id"
+  end
+
   create_table "companies", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -47,9 +56,16 @@ ActiveRecord::Schema.define(version: 2022_02_15_124259) do
     t.string "avatar"
     t.datetime "deleted_at"
     t.string "location"
+    t.string "website"
+    t.text "about"
+    t.string "phone"
+    t.integer "state_id"
+    t.integer "city_id"
+    t.index ["city_id"], name: "index_companies_on_city_id"
     t.index ["deleted_at"], name: "index_companies_on_deleted_at"
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+    t.index ["state_id"], name: "index_companies_on_state_id"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -66,7 +82,35 @@ ActiveRecord::Schema.define(version: 2022_02_15_124259) do
     t.date "expiration_date"
     t.string "location"
     t.integer "status"
+    t.integer "occupation_area_id"
+    t.integer "state_id"
+    t.integer "city_id"
+    t.index ["city_id"], name: "index_jobs_on_city_id"
     t.index ["company_id"], name: "index_jobs_on_company_id"
+    t.index ["occupation_area_id"], name: "index_jobs_on_occupation_area_id"
+    t.index ["state_id"], name: "index_jobs_on_state_id"
+  end
+
+  create_table "occupation_areas", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string "name"
+    t.string "acronym"
+    t.integer "region_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["region_id"], name: "index_states_on_region_id"
   end
 
 end

@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :companies, only: [:index, :show] do
 
     # On collection
-    # @implemented
+    # @implemented  
     collection do
 
       # Search

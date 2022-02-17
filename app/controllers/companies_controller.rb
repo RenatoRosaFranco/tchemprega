@@ -17,6 +17,12 @@ class CompaniesController < ApplicationController
 	end
 
 	def show
+		@jobs = @company.jobs
+										.order(created_at: :desc)
+										.available
+										.page(params[:page])
+										.per(7)
+
 		respond_to do |format|
 			format.html
 			format.json { render company: @company }
