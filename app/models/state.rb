@@ -5,6 +5,7 @@
 #  id         :integer          not null, primary key
 #  acronym    :string
 #  name       :string
+#  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  region_id  :integer
@@ -14,6 +15,9 @@
 #  index_states_on_region_id  (region_id)
 #
 class State < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: [:slugged]
+
   self.table_name  = 'states'
   self.primary_key = 'id'
 

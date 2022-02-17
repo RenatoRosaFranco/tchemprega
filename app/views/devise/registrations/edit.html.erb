@@ -41,6 +41,18 @@
                 <% end %>
 
                 <div class="field">
+                  <%= f.label :phone, 'Telefone' %>
+                  <%= f.phone_field :phone, class: 'form-control', required: 'required',
+                  placeholder: 'Digite o telefone', autocomplete: 'off' %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :about, 'Sobre a empresa' %>
+                  <%= f.text_area :about, class: 'form-control', id: 'pfeditor',
+                  placeholder: 'Digite a bio', autocomplete: 'off' %>
+                </div>
+
+                <div class="field">
                   <%= f.label :state_id, 'Estado' %>
                   <%= f.collection_select(:state_id, State.order(:name), :id, :name,
                   { prompt: 'Selecionar Estado' }, { class: 'form-control', required: 'required' }) %>

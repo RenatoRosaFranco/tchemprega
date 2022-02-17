@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_17_151932) do
+ActiveRecord::Schema.define(version: 2022_02_17_163140) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_151932) do
     t.integer "state_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
     t.index ["state_id"], name: "index_cities_on_state_id"
   end
 
@@ -102,6 +103,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_151932) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
   end
 
   create_table "states", force: :cascade do |t|
@@ -110,6 +112,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_151932) do
     t.integer "region_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
     t.index ["region_id"], name: "index_states_on_region_id"
   end
 
