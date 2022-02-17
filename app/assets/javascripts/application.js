@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require social-share-button
 //= require jquery.inputmask.bundle.min
 //= require bootstrap
 //= require rails-ujs

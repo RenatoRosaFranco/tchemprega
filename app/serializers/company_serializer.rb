@@ -11,6 +11,9 @@
 #  document               :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  facebook               :string
+#  instagram              :string
+#  linkedin               :string
 #  location               :string
 #  name                   :string
 #  phone                  :string
@@ -18,6 +21,7 @@
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  slug                   :string
+#  twitter                :string
 #  website                :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null

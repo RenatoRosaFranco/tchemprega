@@ -19,6 +19,7 @@ gem 'omniauth-oauth2'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-apple'
+gem 'social-share-button'
 gem 'fast_jsonapi', "~> 1.5"
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

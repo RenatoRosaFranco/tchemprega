@@ -11,6 +11,17 @@
 					<%= render partial: 'job', locals: { job: @job } %>
 				</div>
 
+        <panel class="panel-default">
+          <div class="panel body">
+            <div class="text-center" style='padding: 20px;'>
+              <h4 class='bold uppercase' 
+                  style='margin-bottom: 20px; color: #838383;'>
+                  Compartilhe esta vaga</h4>
+              <%= social_share_button_tag(@job.title) %>
+            </div>
+          </div>
+        </panel>
+
 				<div class='panel panel-default'>
 					<div class='panel-body'>
 						<div id="content"><br>
@@ -24,7 +35,11 @@
 								<% if is_a_link?(@job.apply_path) then %>
 									<%= link_to 'Ir para o link da vaga', @job.apply_path, target: '_blank' %>
 								<% else %>
-									<%= link_to 'Enviar meu curriculo', "mailto:#{@job.apply_path}", target: '_blank' %>
+									<%= link_to "mailto:#{@job.apply_path}", 
+                    class: 'btn btn-primary btn-lg top',
+                    target: '_blank' do %>
+                    Enviar meu curriculo
+                  <% end %>
 								<% end %>
 							<% else %>
 								<p>A vaga foi expirada e infelizmente não esta mais recebendo candidaturas.</p>

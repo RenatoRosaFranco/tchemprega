@@ -61,6 +61,14 @@ class Job < ApplicationRecord
     self.status = 'Ativa'
   end
 
+  def next?
+    Job.where('id > ?', id).first || false
+  end
+
+  def previous?
+    Job.where('id < ?', id).first || false
+  end
+
   # Class Methods
   # @implemented
   class << self

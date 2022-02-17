@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_17_163140) do
+ActiveRecord::Schema.define(version: 2022_02_17_210239) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -62,6 +62,10 @@ ActiveRecord::Schema.define(version: 2022_02_17_163140) do
     t.string "phone"
     t.integer "state_id"
     t.integer "city_id"
+    t.string "facebook"
+    t.string "instagram"
+    t.string "twitter"
+    t.string "linkedin"
     t.index ["city_id"], name: "index_companies_on_city_id"
     t.index ["deleted_at"], name: "index_companies_on_deleted_at"
     t.index ["email"], name: "index_companies_on_email", unique: true
