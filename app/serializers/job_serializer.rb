@@ -31,5 +31,12 @@
 #
 class JobSerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  set_type :job
+
+  attributes :title, :description, :expiration_date
+
+  belongs_to :company
+  belongs_to :occupation_area
+  belongs_to :state
+  belongs_to :city
 end

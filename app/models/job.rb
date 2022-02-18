@@ -56,6 +56,8 @@ class Job < ApplicationRecord
 
   belongs_to :company
   belongs_to :occupation_area
+  belongs_to :state
+  belongs_to :city
 
   def set_expiration_date(date = Date.today + 15.days)
     self.expiration_date = date

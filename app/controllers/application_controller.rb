@@ -8,7 +8,13 @@ class ApplicationController < ActionController::Base
   self.responder = ApplicationResponder
   respond_to :html
 
-  protected 
+  protected
+
+  def serialize(serializer_class, object)
+    serializer_class.new(object).serialized_json
+  rescue StandardError => e
+    raise StandardError, e
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar, :name, :document, :state_id, :city_id])

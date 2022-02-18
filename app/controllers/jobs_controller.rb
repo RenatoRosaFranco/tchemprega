@@ -15,7 +15,7 @@ class JobsController < ApplicationController
 
 		respond_to do |format|
 			format.html
-			format.json { render json: @jobs }
+			format.json { render json: serialize(JobSerializer, @jobs) }
 		end
 	end
 
@@ -24,7 +24,7 @@ class JobsController < ApplicationController
 
 		respond_to do |format|
 			format.html
-			format.json { render json: @job }
+			format.json { render json: serialize(JobSerializer, @job) }
 		end
 	end
 
@@ -34,7 +34,7 @@ class JobsController < ApplicationController
 		respond_to do |format|
 			if @job.save
 				format.html { redirect_to @job, notice: 'Vaga adicionada com sucesso.' }
-				format.json { render json: @job.errors, status: :created, location: @job }
+				format.json { render json: @job, status: :created, location: @job }
 			else
 				format.html { render :new }
 				format.json { render json: @job.errors, status: :unprocessable_entity }
@@ -45,7 +45,7 @@ class JobsController < ApplicationController
 	def show
 		respond_to do |format|
 			format.html
-			format.json { render json: @job }
+			format.json { render json: serialize(JobSerializer, @job) }
 		end
 	end
 
@@ -183,6 +183,7 @@ class JobsController < ApplicationController
 	def job_params
 		params.require(:job)
 					.permit(:title, :hiring_type, :modality, :period,
-									:description, :occupation_area_id, :location, :apply_path)
+									:description, :occupation_area_id, :location, :apply_path,
+                  :state_id, :city_id)
 	end
 end

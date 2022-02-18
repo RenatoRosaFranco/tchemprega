@@ -12,7 +12,7 @@ class CompaniesController < ApplicationController
 
 		respond_to do |format|
 			format.html
-			format.json { render companies: @companies }
+			format.json { render companies: serialize(CompanySerializer, @companies) }
 		end
 	end
 
@@ -25,7 +25,7 @@ class CompaniesController < ApplicationController
 
 		respond_to do |format|
 			format.html
-			format.json { render company: @company }
+			format.json { render company: serialize(CompanySerializer, @company) }
 		end
 	end
 
