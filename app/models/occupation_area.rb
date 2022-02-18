@@ -14,4 +14,7 @@ class OccupationArea < ApplicationRecord
 
 	self.table_name  = 'occupation_areas'
 	self.primary_key = 'id'
+
+  has_many :jobs,  dependent: :destroy
+  has_many :users, dependent: :destroy
 end

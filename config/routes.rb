@@ -2,15 +2,14 @@
 
 Rails.application.routes.draw do
 
+  devise_for :users
   # Administration
   # @implemented
   mount RailsAdmin::Engine => '/administrate', as: 'rails_admin'
 
   # Authenthication
   # @implemented
-  devise_for :companies, {
-
-  }
+  devise_for :companies, {}
 
   # Application
   # @implemented
