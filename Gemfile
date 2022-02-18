@@ -33,9 +33,27 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'pg'
 gem 'inputmask-rails'
+gem "devise", "~> 4.8"
+gem "friendly_id", "~> 5.4"
+gem "annotate", "~> 3.2"
+gem "ransack", "~> 2.5"
+gem "kaminari", "~> 1.2"
+gem "kaminari-bootstrap3", "~> 0.1.0"
+gem "responders", "~> 3.0"
+gem "simple_form", "~> 5.1"
+gem "bootstrap3-rails", "~> 3.2"
+gem "jquery-rails", "~> 4.4"
+gem "pundit", "~> 2.1"
+gem "rails_admin", "~> 2.2"
+gem "figaro", "~> 1.2"
+gem "draper", "~> 4.0"
+gem "better_errors", "~> 2.9"
+gem "fast_jsonapi", "~> 1.5"
+gem "active_model_serializers", "~> 0.10.13"
+gem "cloudinary", "~> 1.21"
+gem "newrelic_rpm", "~> 8.4"
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -80,41 +98,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem "devise", "~> 4.8"
-
-gem "friendly_id", "~> 5.4"
-
-gem "annotate", "~> 3.2"
-
-gem "ransack", "~> 2.5"
-
-gem "kaminari", "~> 1.2"
-
-gem "kaminari-bootstrap3", "~> 0.1.0"
-
-gem "responders", "~> 3.0"
-
-gem "simple_form", "~> 5.1"
-
-gem "bootstrap3-rails", "~> 3.2"
-
-gem "jquery-rails", "~> 4.4"
-
-gem "pundit", "~> 2.1"
-
-gem "rails_admin", "~> 2.2"
-
-gem "figaro", "~> 1.2"
-
-gem "draper", "~> 4.0"
-
-gem "better_errors", "~> 2.9"
-
-gem "fast_jsonapi", "~> 1.5"
-
-gem "active_model_serializers", "~> 0.10.13"
-
-gem "cloudinary", "~> 1.21"
-
-gem "newrelic_rpm", "~> 8.4"
