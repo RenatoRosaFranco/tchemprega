@@ -1,18 +1,18 @@
-# frozen_string_literal: true
-
 # == Schema Information
 #
-# Table name: regions
+# Table name: partners
 #
 #  id         :integer          not null, primary key
+#  logo       :string
 #  name       :string
 #  slug       :string
+#  status     :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class RegionSerializer
+class PartnerSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :id, :name, :slug
+  set_type :partner
 
-  has_many :states
+  attributes :id, :logo, :name, :status, :slug
 end

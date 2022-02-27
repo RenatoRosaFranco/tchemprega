@@ -1,18 +1,17 @@
-# frozen_string_literal: true
-
 # == Schema Information
 #
-# Table name: regions
+# Table name: partners
 #
 #  id         :integer          not null, primary key
+#  logo       :string
 #  name       :string
 #  slug       :string
+#  status     :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class RegionSerializer
-  include FastJsonapi::ObjectSerializer
-  attributes :id, :name, :slug
+require 'rails_helper'
 
-  has_many :states
+RSpec.describe Partner, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

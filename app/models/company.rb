@@ -37,12 +37,20 @@
 class Company < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged]
-
-  has_one_attached :avatar
-
+  
   self.table_name  = 'companies'
   self.primary_key = 'id'
+  
+  # Soft Delete
+  # @implemented
+  acts_as_paranoid column: :deleted_at
 
+  # FileUpload
+  # @implemented
+  has_one_attached :avatar
+
+  # Validations
+  # @implemented
   validates :document,
             presence: true,
             uniqueness: true,
@@ -51,10 +59,15 @@ class Company < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  
+  # Relationships
+  # @implemented
   has_many :jobs, dependent: :destroy
   belongs_to :state, optional: true
   belongs_to :city,  optional: true
 
+  # Devise
+  # @implemented
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end

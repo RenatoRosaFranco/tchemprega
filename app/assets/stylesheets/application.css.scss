@@ -77,6 +77,8 @@ body {
   width: 25px;
   height: 25px;
   border-radius: 25px;
+  padding: 2px;
+  border: 2px solid #00285d;
 }
 
 .no-border {
@@ -97,6 +99,15 @@ body {
   padding-bottom: 50px;
   color: #FFF;
   height: 290px;
+
+  form {
+    position: relative;
+
+    input[type=search] {
+      position: relative;
+      height: 45px;
+    }
+  }
 
   p {
     postion: relative;
@@ -164,7 +175,7 @@ body {
 
 footer {
   position: relative;
-  margin-top: 40px;
+  border-top: 2px solid #EEE;
   background-color: #FFF;
   padding-top: 20px;
   padding-bottom:  20px;
@@ -182,13 +193,14 @@ footer {
 
 #pfForm {
   .field {
-    posiiton: relative;
+    position: relative;
     margin-top: 5px;
     margin-bottom: 5px;
   }
 
   input[type=text],
   input[type=email],
+  input[type=search], 
   input[type=password],
   select {
     position: relative;
@@ -214,4 +226,75 @@ footer {
   padding-bottom: 80px;
   background-color: #000;
   color: #FFF;
+}
+
+// News
+#news {
+  position: relative;
+  background-color: #FFF;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  .alternative {
+    position: relative;
+    color: #00285d;
+  }
+
+  .logo {
+    position: relative;
+    width: 94px;
+    height: 94px;
+    margin-left: -80px;
+    border-radius: 84px;
+    padding: 3px;
+    border: 3px solid #00285d;
+  }
+}
+
+
+// JobList
+.btnJobsPath {
+  position: relative;
+  margin-top: 20px;
+  background-color: #00285d;
+  padding: 13px;
+  font-weight: bold;
+  color: #FFF;
+}
+
+// Testimonial
+#testimonial {
+  position: relative;
+  background-color: #FFF;
+  margin-top: 50px;
+  padding-top: 30px;
+  padding-bottom: 50px;
+
+  .alternative {
+    position: relative;
+    color: #00285d;
+  }
+
+  #testimonial-block {
+    .testimonials {
+      position: relative;
+      border-left: 5px solid #00285d;
+
+      .logo {
+        position: relative;
+        padding: 2px;
+        margin-top: 18px;
+        border: 2px solid #00285d;
+        width: 34px;
+        height: 34px;
+        border-radius: 34px;
+      }
+    }
+  }
+}
+
+#pagination {
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 30px;
 }

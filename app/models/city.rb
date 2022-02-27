@@ -21,7 +21,11 @@ class City < ApplicationRecord
   self.table_name  = 'cities'
   self.primary_key = 'id'
 
+  # Relationships
+  # @implemented
   has_many :jobs, dependent: :destroy
   has_many :companies, dependent: :destroy
+  has_many :users, dependent: :destroy
+  
   belongs_to :state
 end

@@ -17,6 +17,8 @@ class Region < ApplicationRecord
 	self.table_name  = 'regions'
 	self.primary_key = 'id'
 
+  # Relationships
+  # @implemented
 	has_many :states, dependent: :destroy
 
 	def self.populate

@@ -2,7 +2,7 @@
 
 module Dashboard
   class HomeController < ApplicationController
-    before_action :authenticate_company!
+    before_action :authenticate_user!
 
     def index
     end

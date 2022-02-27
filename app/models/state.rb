@@ -21,6 +21,8 @@ class State < ApplicationRecord
   self.table_name  = 'states'
   self.primary_key = 'id'
 
+  # Relationships
+  # @implemented
   has_many   :jobs, dependent: :destroy
   has_many   :companies, dependent: :nullify
   has_many   :cities, dependent: :destroy

@@ -33,14 +33,18 @@ class Job < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: [:slugged]
 
+  self.table_name  = 'jobs'
+  self.primary_key = 'id'
+
+  # Enum
+  # @implemented
   enum modality: ['Presencial', 'Remoto']
   enum hiring_type: ['CLT', 'PJ', 'Free-Lance']
   enum period: ['Integral', 'Parcial']
   enum status: ['Expirada', 'Ativa']
 
-  self.table_name  = 'jobs'
-  self.primary_key = 'id'
-
+  # Scopes
+  # @implemented
   scope :news,      -> { where('created_at >= ?', Date.today) }
   scope :available, -> { where('expiration_date > ?', Date.today) }
   scope :expirated, -> { where('expiration_date < ?', Date.today) }
@@ -50,10 +54,16 @@ class Job < ApplicationRecord
   scope :monthly,   -> { time_lapse(:month) }
   scope :yearly,    -> { time_lapse(:year) }
 
+  # Hooks
+  # @implemented
   before_create :set_expiration_date
 
+  # Delegations
+  # @implemented
   delegate :name, to: :company, prefix: :company
 
+  # Relationships
+  # @implemented
   belongs_to :company
   belongs_to :occupation_area
   belongs_to :state

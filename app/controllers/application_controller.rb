@@ -4,11 +4,21 @@ require "application_responder"
 
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  around_action :swith_locale
 
   self.responder = ApplicationResponder
   respond_to :html
 
+  def switch_locale(&action)
+    locale = params[:locale] || I18n.default_locale
+    I18n.with_locale(locale, &action)
+  end
+
   protected
+
+  def default_url_options
+    { locale: I18n.locale }
+  end
 
   def serialize(serializer_class, object)
     serializer_class.new(object).serialized_json

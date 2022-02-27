@@ -10,7 +10,8 @@
     <div class="row">
       <div class="col-md-12">
         <div class="col-md-10 col-md-offset-1">
-          <h4 class='bold uppercase text-center'>Empresas em destaque</h4>
+          <h4 class='bold uppercase text-center'>Empresas em 
+            <u class='bold'>destaque </u></h4>
           <br />
 
           <%= render partial: 'company', collection: @companies, as: :company %>
@@ -39,6 +40,8 @@
   </div>
 </section>
 
+<%= render partial: 'shared/news' %>
+
 <section id="latests-jobs">
   <div class="container">
     <div class="row">
@@ -53,7 +56,7 @@
       <div class="col-md-12">
         <div class="text-center">
           <%= link_to jobs_path,
-            class: 'btn btn-default btn-lg top' do %>
+            class: 'btn btn-default btn-lg top btnJobsPath' do %>
               Visualizar todas as vagas
           <% end %>
         </div>
@@ -61,3 +64,5 @@
     </div>
   </div>
 </section>
+
+<%= render partial: 'shared/testimonials' %>

@@ -2,13 +2,13 @@
 
 class CompaniesController < ApplicationController
 	before_action :set_company, only: [:show]
-	respond_to :html, :json, :js
+	respond_to :html
 
 	def index
-		@q = Company.ransack(params[:q])
+		@query = Company.ransack(params[:query])
 		@companies = Company.order(name: :asc)
 												.page(params[:page])
-												.per(7)
+												.per(21)
 
 		respond_to do |format|
 			format.html
@@ -30,11 +30,11 @@ class CompaniesController < ApplicationController
 	end
 
 	def search
-		@q 				 = Company.ransack(params[:q])
-		@companies = @q.result(distinct: true)
-								   .order(created_at: :asc)
-								   .page(params[:page])
-								   .per(20)
+		@query 		 = Company.ransack(params[:query])
+		@companies = @query.result(distinct: true)
+								       .order(created_at: :asc)
+								       .page(params[:page])
+								       .per(21)
 
 		render :index
 	end

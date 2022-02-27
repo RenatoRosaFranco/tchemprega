@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_18_135621) do
+ActiveRecord::Schema.define(version: 2022_02_26_191454) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -96,8 +96,26 @@ ActiveRecord::Schema.define(version: 2022_02_18_135621) do
     t.index ["state_id"], name: "index_jobs_on_state_id"
   end
 
+  create_table "media", force: :cascade do |t|
+    t.string "logo"
+    t.string "name"
+    t.string "external_link"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "occupation_areas", force: :cascade do |t|
     t.string "name"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "partners", force: :cascade do |t|
+    t.string "logo"
+    t.string "name"
+    t.integer "status"
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -120,6 +138,16 @@ ActiveRecord::Schema.define(version: 2022_02_18_135621) do
     t.index ["region_id"], name: "index_states_on_region_id"
   end
 
+  create_table "testimonials", force: :cascade do |t|
+    t.string "avatar"
+    t.string "name"
+    t.string "occupation"
+    t.text "content"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -130,6 +158,8 @@ ActiveRecord::Schema.define(version: 2022_02_18_135621) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "slug"
+    t.datetime "deleted_at"
+    t.string "document"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

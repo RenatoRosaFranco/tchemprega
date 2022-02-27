@@ -1,0 +1,7 @@
+validates :document, if: :lock_update_existing_document?
+
+def lock_update_existing_document?
+  if (document.type.eql?('cpf') && document.present?)
+    errors.add(:base, 'CPF não pode ser alterado')
+  end
+end

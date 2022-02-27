@@ -2,17 +2,29 @@
 
 # == Schema Information
 #
-# Table name: regions
+# Table name: cities
 #
 #  id         :integer          not null, primary key
+#  capital    :boolean
 #  name       :string
 #  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  state_id   :integer
 #
-class RegionSerializer
+# Indexes
+#
+#  index_cities_on_state_id  (state_id)
+#
+class CitySerializer
   include FastJsonapi::ObjectSerializer
-  attributes :id, :name, :slug
+  set_type :city
 
-  has_many :states
+  attributes :name,  :capital, :slug
+
+  has_many :users
+  has_many :companies
+  has_many :jobs
+
+  belongs_to :state
 end

@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 # == Schema Information
 #
-# Table name: regions
+# Table name: occupation_areas
 #
 #  id         :integer          not null, primary key
 #  name       :string
@@ -10,9 +8,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class RegionSerializer
+class OccupationAreaSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :id, :name, :slug
+  set_type :occupation_area
 
-  has_many :states
+  attributes :id, :name, :slug
 end

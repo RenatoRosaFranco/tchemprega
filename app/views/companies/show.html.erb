@@ -49,24 +49,73 @@
 				<div class="col-md-8"><br />
 
 					<ul class="nav nav-tabs" role="tablist">
-				    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Descrição da Empresa</a></li>
-				    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Vagas (<%= @company.jobs.available.count %>)</a></li>
+				    <li role="presentation" class="active">
+              <a href="#home" aria-controls="home" 
+                 role="tab" data-toggle="tab">
+                 Descrição da Empresa
+              </a>
+            </li>
+            <li>
+              <a href='#photos' aria-control='profile' 
+                 role='tab' data-toggle='tab'>
+                 Fotos
+              </a>
+            </li>
+				    <li role="presentation">
+              <a href="#profile" aria-controls="profile" 
+                 role="tab" data-toggle="tab">
+                 Vagas (<%= @company.jobs.available.count %>)</a>
+            </li>
+            <li>
+              <a href='#money' aria-controls='profile' 
+                 role='tab' data-toggle='tab'>
+                 Salários
+              </a>
+            </li>
+            <li role='presentation'>
+              <a href='#review' aria-controls='profile' 
+                 role='tab' data-toggle='tab'>
+                 Avaliações
+              </a>
+            </li>
+            <li role='presentation'>
+              <a href='#faq' aria-controls='profile' 
+                 role='tab' data-toggle='tab'>
+                 Perguntas
+              </a>
+            </li>
 				  </ul>
 
 				  <div class="tab-content"><br />
 				    <div role="tabpanel" class="tab-pane active" id="home">
-				    	<%= raw(@company.about) %>
-				    </div>
+              <br />
+
+				    	<% if !@company.about.blank? %>
+                <%= raw(@company.about) %>
+              <% else %>
+				        <p class="well text-center">
+                  Nenhuma informação foi encontrada.
+                </p>
+              <% end %>
+            </div>
 				    
 				    <div role="tabpanel" class="tab-pane" id="profile">
 				    	<br />
 
 				    	<div id="job-list">
 				    		<%= render @jobs %>
+
+                <% if @jobs.empty? %>
+                  <p class='well text-center'>
+                    Desculpe, nenhuma vaga foi adicionada ainda.
+                  </p>
+                <% end %>
 				    	</div>
 
 				    	<div id="pagination">
-				    		<%= paginate(@jobs) %>
+                <div class='text-center'>
+				    		  <%= paginate(@jobs) %>
+                </div>
 				    	</div>
 				    </div>
 				  </div>
@@ -112,3 +161,5 @@
 		</div>
 	</div>
 </section>
+
+<%= render partial: 'shared/news' %>

@@ -2,17 +2,21 @@
 
 # == Schema Information
 #
-# Table name: regions
+# Table name: testimonials
 #
 #  id         :integer          not null, primary key
+#  avatar     :string
+#  content    :text
 #  name       :string
+#  occupation :string
 #  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class RegionSerializer
+class TestimonialSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :id, :name, :slug
+  set_type :testimonial
 
-  has_many :states
+  attributes :avatar, :name, :occupation, 
+             :content, :slug
 end

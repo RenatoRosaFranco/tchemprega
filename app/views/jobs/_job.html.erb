@@ -1,7 +1,7 @@
 <div class="job">
 	<div class='panel panel-default job-block'>
 		<div class='panel-body'>
-			<div class='col-md-9'>
+			<div class='col-md-9 col-sm-9'>
 				<h5 class='uppercase bold'>
 					<%= image_tag(has_avatar?(job.company), class: 'sm-logo') %>
 					<%= job.company_name %> /
@@ -32,7 +32,7 @@
 				</p>
 			</div>
 
-			<div class="col-md-3">
+			<div class="col-md-3 col-ms-3">
 				<% if owner?(job) %>
 					<% if current_company %>
 						<ul class="list-unstyled text-right">

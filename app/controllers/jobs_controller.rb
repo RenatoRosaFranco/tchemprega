@@ -4,11 +4,11 @@ class JobsController < ApplicationController
 	before_action :authenticate_company!, except: [:index, :show, :expirated, :search]
 	before_action :set_job, only: [:show, :edit, :update, :destroy, :expire, :active]
 	before_action :is_job_owner, only: [:edit, :update, :destroy]
-	respond_to 		:html, :json, :js
+	respond_to 		:html
 
 	def index
-		@q 	  = Job.ransack(params[:q])
-		@jobs = Job.available
+		@query = Job.ransack(params[:query])
+		@jobs  = Job.available
 							 .order(created_at: :desc)
 							 .page(params[:page])
 							 .per(7)
@@ -74,8 +74,8 @@ class JobsController < ApplicationController
 	end
 
 	def expirated
-		@q    = Job.ransack(params[:q])
-		@jobs = Job.expirated
+		@query = Job.ransack(params[:query])
+		@jobs  = Job.expirated
 							 .order(created_at: :desc)
 							 .page(params[:page])
 							 .per(20)
@@ -96,8 +96,8 @@ class JobsController < ApplicationController
 	end
 
 	def company
-		@q = Job.ransack(params[:q])
-		@jobs = current_company.jobs.available
+		@query = Job.ransack(params[:query])
+		@jobs  = current_company.jobs.available
 							 .order(created_at: :desc)
 							 .page(params[:page])
 							 .per(20)
@@ -118,8 +118,8 @@ class JobsController < ApplicationController
 	end
 
 	def daily
-		@q 		= Job.ransack(params[:q])
-		@jobs = Job.available.daily
+		@query = Job.ransack(params[:query])
+		@jobs  = Job.available.daily
 							 .order(created_at: :desc)
 							 .page(params[:page])
 							 .per(20)
@@ -128,8 +128,8 @@ class JobsController < ApplicationController
 	end
 
 	def weekly
-		@q 		= Job.ransack(params[:q])
-		@jobs = Job.available.weekly
+		@query = Job.ransack(params[:query])
+		@jobs  = Job.available.weekly
 							 .order(created_at: :desc)
 							 .page(params[:page])
 							 .per(20)
@@ -138,8 +138,8 @@ class JobsController < ApplicationController
 	end
 
 	def monthly
-		@q 	  = Job.ransack(params[:q])
-		@jobs = Job.available.monthly
+		@query = Job.ransack(params[:query])
+		@jobs  = Job.available.monthly
 							 .order(created_at: :desc)
 							 .page(params[:page])
 							 .per(20)
@@ -148,8 +148,8 @@ class JobsController < ApplicationController
 	end
 
 	def yearly
-		@q 		= Job.ransack(params[:q])
-		@jobs = Job.available.yearly
+		@query = Job.ransack(params[:query])
+		@jobs  = Job.available.yearly
 								.order(created_at: :desc)
 								.page(params[:page])
 								.per(20)
@@ -158,8 +158,8 @@ class JobsController < ApplicationController
 	end
 
 	def search
-		@q 		= Job.ransack(params[:q])
-		@jobs = @q.result(distinct: true)
+		@query = Job.ransack(params[:query])
+		@jobs  = @query.result(distinct: true)
 							.order(created_at: :desc)
 							.page(params[:page])
 							.per(20)

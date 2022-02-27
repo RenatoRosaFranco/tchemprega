@@ -2,7 +2,7 @@
 
 class HomeController < ApplicationController
   def index
-    @q = Job.ransack(params[:q])
+    @query = Job.ransack(params[:query])
     @jobs = Job.order(created_at: :desc).limit(4)
     @companies = Company.order(created_at: :desc).limit(3)
   end
