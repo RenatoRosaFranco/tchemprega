@@ -47,6 +47,23 @@ body {
     height: 70px;
   }
 
+  .welcome {
+    position: relative;
+    padding-right: 20px;
+    padding-top: 5px;
+  }
+
+  .avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    margin-right: 15px;
+    border-radius: 54px;
+    border: 3px solid #00285d;
+    padding: 2px;
+    margin-top: 7px;
+  }
+
   .jobBtn {
     position: relative;
     border: 3px solid #00285d;
@@ -179,6 +196,19 @@ footer {
   background-color: #FFF;
   padding-top: 20px;
   padding-bottom:  20px;
+
+  i {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #EEE;
+    background-color: #00285d;
+    color: #FFF;
+    border: 2px solid #00285d;
+    border-radius: 25px;
+    padding: 8px;
+    position: relative;
+    font-size: 22px;
+  }
 }
 
 .bold {
@@ -219,6 +249,7 @@ footer {
   }
 }
 
+// NewJob
 #new-job {
   position: relative;
   margin-top: 20px;
@@ -226,6 +257,22 @@ footer {
   padding-bottom: 80px;
   background-color: #000;
   color: #FFF;
+
+  a {
+    position: relative;
+    background-color: transparent;
+    border: 2px solid #FFF;
+    font-weight: bold;
+    transition: 0.5s;
+
+    &.over, &:hover {
+      position: relative;
+      border: 2px solid #00285d;
+      background-color: #00285d;
+      transition: 0.5s;
+      color: #FFF;
+    }
+  }
 }
 
 // News
@@ -285,14 +332,82 @@ footer {
         padding: 2px;
         margin-top: 18px;
         border: 2px solid #00285d;
-        width: 34px;
-        height: 34px;
-        border-radius: 34px;
+        width: 44px;
+        height: 44px;
+        border-radius: 44px;
       }
     }
   }
 }
 
+
+// JobCounter
+#jobCounter, #jobAlert {
+  .panel-default {
+    position: relative;
+    border-left: 5px solid #00285d;
+  }
+}
+
+// JobAlert
+#jobAlert {
+  position: relative;
+
+  form {
+    position: relative;
+
+    input[type=email] {
+      position: relative;
+      background-color: #EEE;
+      width: 100%;
+      height: 44px;
+    }
+
+    input[type=submit] {
+      position: relative;
+      width: 180px;
+      background-color: #00285d !important;
+    }
+  }
+}
+
+// CompanySubtitle 
+.company-subtitle {
+  position: relative;
+  font-size: 16px !important;
+}
+
+// CompanyLogo
+#company-logo {
+  position: relative;
+  width: 108px;
+  height: 108px;
+  margin-right: 15px;
+  float: left;
+}
+
+// CompanySocial
+#company-social {
+  position: relative;
+
+  i {
+    margin-right: 8px;
+    position: relative;
+    font-size: 22px;
+  }
+}
+
+// Sessions
+.sessions {
+  position: relative;
+
+  footer {
+    position: relative;
+    margin-top: 40px;
+  }
+}
+
+// Pagination
 #pagination {
   position: relative;
   margin-top: 15px;

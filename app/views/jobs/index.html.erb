@@ -8,8 +8,83 @@
 <section id="content">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
-				<div id="filtering" style='padding-top: 10px; padding-bottom: 20px;'>
+      <div class='col-md-3'>
+        <div class="row">
+          <div class="col-md-12">
+            <div class='panel panel-default'>
+              <div class='panel-body'>
+                <h4 class='bold'>
+                <i class="fa-solid fa-angle-right"></i>
+                Refinar por cidade</h4>
+                <ul class='list-unstyled'>
+                  <% City.available_cities.each do |city| %>
+                  <li>
+                    <%= link_to '' do %>
+                      <%= city.name %> 
+                      <span class='bold'>
+                        (<%= rand(100) %>)
+                      </span>
+                    <% end %>
+                  </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class='panel panel-default'>
+              <div class='panel-body'>
+                <h4 class='bold'>
+                <i class="fa-solid fa-angle-right"></i>
+                Refinar por Áreas de atuação</h4>
+                <ul class='list-unstyled'>
+                  <% City.available_cities.each do |city| %>
+                  <li>
+                    <%= link_to '' do %>
+                      <%= city.name %> 
+                      <span class='bold'>
+                        (<%= rand(100) %>)
+                      </span>
+                    <% end %>
+                  </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class='panel panel-default'>
+              <div class='panel-body'>
+                <h4 class='bold'>
+                <i class="fa-solid fa-angle-right"></i> 
+                Refinar por Tipo de contratação</h4>
+                <ul class='list-unstyled'>
+                  <% City.available_cities.each do |city| %>
+                  <li>
+                    <%= link_to '' do %>
+                      <%= city.name %> 
+                      <span class='bold'>
+                        (<%= rand(100) %>)
+                      </span>
+                    <% end %>
+                  </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+			<div class="col-md-9">
+				<div id="filtering" 
+        style='padding-top: 10px; padding-bottom: 20px;'>
 					<h4 class='bold'>
 					<span class='badge'>
 						<i class="fa-solid fa-briefcase-blank"></i>.	
@@ -72,7 +147,42 @@
 					</ul>
 				</div>
 
-				<br>
+        <div id='jobCounter'>
+          <div class="row">
+            <div class="col-md-12">
+              <div class='panel panel-default'>
+                <div class='panel-body'>
+                  <h4 class='bold uppercase text-center'>
+                    <%= @jobs.count %> Vaga(s) Encontrada(s)
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="jobAlert">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <%= form_for(:alert, { url: alert_path, method: :post}) do |f| %>
+                <div class="col-md-4">
+                  <h4 class='bold'>
+                    Receber email para esse tipo de vagas
+                  </h4>
+                </div>
+                <div class="col-md-5">
+                  <%= f.email_field :email, class: 'form-control',
+                  required: 'required', placeholder: 'Digite o e-mail',autocomplete: 'off' %>
+                </div>
+                <div class="col-md-3 text-center">
+                  <%= f.submit 'Criar Alerta', 
+                  class: 'btn btn-primary btn-lg top jobBtn' %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
 				<div id="job-list">
 					<%= render @jobs %>
 
@@ -92,5 +202,7 @@
 		</div>
 	</div>
 </section>
+
+<%= render partial: 'shared/testimonials' %>
 
 <%= render partial: 'shared/news' %>

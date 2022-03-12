@@ -28,4 +28,22 @@ class City < ApplicationRecord
   has_many :users, dependent: :destroy
   
   belongs_to :state
+
+  def self.available_cities
+    where(name: 
+      [
+        'São Borja', 
+        'Itaqui', 
+        'Uruguaiana', 
+        'Santo Ângelo', 
+        'São Luiz Gonzaga', 
+        'Santiago', 
+        'Santa Maria',
+        'Jaguari',
+        'Garruchos',
+        'Maçambara'
+      ], 
+      state_id: 23)
+      .order(:name)
+  end
 end

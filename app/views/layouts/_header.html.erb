@@ -35,29 +35,35 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if current_company %>
-        <li class='text-right' style='padding-right: 20px;'>
+        <li class='text-right welcome'>
           <span class='bold uppercase'>Olá, seja Bem vindo(a)</span><br>
           <i class="fa-solid fa-building"></i> <%= current_company.name %>
         </li>
         <li>
-          <%= image_tag(has_avatar?(current_company), style: 'width: 44px; height: 44px; margin-right: 15px; border-radius: 54px; border: 3px solid #00285d; padding: 2px;') %>
+          <%= image_tag(has_avatar?(current_company), class: 'avatar') %>
         </li>
         <li>
           <%= link_to new_job_path,
             class: 'btn btn-primary btn-lg top jobBtn' do %>
+              <i class="fa-solid fa-pencil"></i>
               Postar Vaga
           <% end %>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Minha Conta <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><%= link_to 'Dashboard', dashboard_path %></li>
-            <li><%= link_to 'Editar Dados', edit_company_registration_path %></li>
+            <li>
+              <%= link_to edit_company_registration_path do %>
+                <i class="fa-solid fa-pen-to-square"></i>
+                Editar Dados
+              <% end %>
+            </li>
             <li role="separator" class="divider"></li>
             <li>
               <%= link_to destroy_company_session_path, 
                 method: :delete do %>
-                  Sair
+                  <i class="fa-solid fa-power-off"></i>
+                   Sair
               <% end %>
             </li>
           </ul>

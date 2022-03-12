@@ -4,7 +4,7 @@ require "application_responder"
 
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  around_action :swith_locale
+  around_action :switch_locale
 
   self.responder = ApplicationResponder
   respond_to :html
@@ -31,5 +31,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [
       :avatar, :name, :document, :state_id, :city_id, :phone, :about
     ])
+  end
+
+  private
+
+  def redirect_to_default
+    redirect_to root_path
   end
 end

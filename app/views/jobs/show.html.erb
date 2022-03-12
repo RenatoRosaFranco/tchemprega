@@ -16,7 +16,7 @@
             <div class="text-center" style='padding: 20px;'>
               <h4 class='bold uppercase' 
                   style='margin-bottom: 20px; color: #838383;'>
-                  Compartilhe estaþ vaga</h4>
+                  Compartilhe esta vaga</h4>
               <%= social_share_button_tag(@job.title) %>
             </div>
           </div>
@@ -26,11 +26,15 @@
 					<div class='panel-body'>
 						<div id="content"><br>
 							<h4 class='bold'>Detalhes da vaga</h4>
+              <hr />
+
 							<%= raw(@job.description) %>
 						</div>
 
 						<div id="apply"><br>
 							<h4 class='bold'>Para candidatar-se</h4>
+              <hr />
+
 							<% if !expirated_job?(@job) %>
 								<% if is_a_link?(@job.apply_path) then %>
 									<%= link_to 'Ir para o link da vaga', @job.apply_path, target: '_blank' %>
@@ -38,6 +42,7 @@
 									<%= link_to "mailto:#{@job.apply_path}", 
                     class: 'btn btn-primary btn-lg top',
                     target: '_blank' do %>
+                    <i class="fa-solid fa-file-lines"></i>
                     Enviar meu curriculo
                   <% end %>
 								<% end %>

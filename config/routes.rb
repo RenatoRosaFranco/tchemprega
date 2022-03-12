@@ -29,6 +29,11 @@ Rails.application.routes.draw do
     end
   end
 
+  # POST Routes
+  post 'alert' => 'alerts#create'
+
+  # GET Rotues
+
   # Jobs
   # @implemented
   resources :jobs do

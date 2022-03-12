@@ -20,20 +20,55 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="list-unstyled">
+              <%= image_tag(has_avatar?(@company), 
+              id: 'company-logo') %>
 							<li><h2 class='bold'><%= @company.name %></h2></li>
 							<ul class="list-unstyled list-inline">
 								<li>
-									<p>
+									<p class='company-subtitle'>
 										<i class="fa-solid fa-location-dot"></i>
-										<%= @company.location %>
+										<%= is_present?(@company.location, 'Não Informado') %>
 									</p>
 								</li>
 								<li>
-									<p>
+									<p class='company-subtitle'>
 										<i class="fa-solid fa-earth-americas"></i>
-										<%= @company.website %></li>
+										<%= link_to is_present?(@company.website, 'Não Informado'), 
+                      is_present?(@company.website, '#'), 
+                      target: '_blank' %></li>
 									</p>
 							</ul>
+              <ul id='company-social' 
+                  class='list-unstyled list-inline'>
+                <li>
+                  <%= link_to is_present?(@company.facebook, '#'),
+                    target: '_blank' do %>
+                    <i class="fa-brands fa-facebook-square"
+                    title="<%= @company.name %> | Facebook"></i>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to is_present?(@company.instagram, '#'),
+                    target: '_blank' do %>
+                    <i class="fa-brands fa-instagram"
+                    title="<%= @company.name %> | Instagram"></i>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to is_present?(@company.twitter, '#'),
+                    target: '_blank' do %>
+                    <i class="fa-brands fa-twitter" 
+                    title="<%= @company.name %> | Twitter"></i>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to is_present?(@company.linkedin, '#'),
+                    target: '_blank' do %>
+                    <i class="fa-brands fa-linkedin"
+                    title="<%= @company.name %> | Linkedin"></i>
+                  <% end %>
+                </li>
+              </ul>
 						</ul>						
 					</div>
 				</div>
@@ -50,74 +85,91 @@
 
 					<ul class="nav nav-tabs" role="tablist">
 				    <li role="presentation" class="active">
-              <a href="#home" aria-controls="home" 
+              <a href="#about" aria-controls="about" 
                  role="tab" data-toggle="tab">
+                 <i class="fa-solid fa-circle-info"></i> 
                  Descrição da Empresa
               </a>
             </li>
             <li>
-              <a href='#photos' aria-control='profile' 
+              <a href='#photos' aria-control='photos' 
                  role='tab' data-toggle='tab'>
+                 <i class="fa-solid fa-camera"></i>
                  Fotos
               </a>
             </li>
 				    <li role="presentation">
-              <a href="#profile" aria-controls="profile" 
+              <a href="#jobs" aria-controls="jobs" 
                  role="tab" data-toggle="tab">
+                 <i class="fa-solid fa-briefcase"></i>
                  Vagas (<%= @company.jobs.available.count %>)</a>
             </li>
-            <li>
-              <a href='#money' aria-controls='profile' 
-                 role='tab' data-toggle='tab'>
-                 Salários
-              </a>
-            </li>
             <li role='presentation'>
-              <a href='#review' aria-controls='profile' 
+              <a href='#review' aria-controls='review' 
                  role='tab' data-toggle='tab'>
+                 <i class="fa-solid fa-star"></i>
                  Avaliações
               </a>
             </li>
             <li role='presentation'>
-              <a href='#faq' aria-controls='profile' 
+              <a href='#faq' aria-controls='faq' 
                  role='tab' data-toggle='tab'>
+                 <i class="fa-solid fa-circle-question"></i> 
                  Perguntas
               </a>
             </li>
 				  </ul>
 
 				  <div class="tab-content"><br />
-				    <div role="tabpanel" class="tab-pane active" id="home">
+				    <div role="tabpanel" class="tab-pane active" id="about">
+              <div class='panel panel-default'>
+                <div class='panel-body'>
+    				    	<% if !@company.about.blank? %>
+                    <%= raw(@company.about) %>
+                  <% else %>
+    				        <p class="well text-center">
+                      Nenhuma informação foi encontrada.
+                    </p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+				    
+				    <div role="tabpanel" class="tab-pane" id="photos">
               <br />
 
-				    	<% if !@company.about.blank? %>
+              <p class="well text-center">
+                Em breve...
+              </p>
+				    </div>
+
+            <div role="tabpanel" class="tab-pane" id="jobs">
+              <br />
+
+              <% if !@company.about.blank? %>
                 <%= raw(@company.about) %>
               <% else %>
-				        <p class="well text-center">
+                <p class="well text-center">
                   Nenhuma informação foi encontrada.
                 </p>
               <% end %>
             </div>
-				    
-				    <div role="tabpanel" class="tab-pane" id="profile">
-				    	<br />
 
-				    	<div id="job-list">
-				    		<%= render @jobs %>
+            <div role="tabpanel" class="tab-pane" id="review">
+              <br />
 
-                <% if @jobs.empty? %>
-                  <p class='well text-center'>
-                    Desculpe, nenhuma vaga foi adicionada ainda.
-                  </p>
-                <% end %>
-				    	</div>
+              <p class="well text-center">
+                Em breve...
+              </p>
+            </div>
 
-				    	<div id="pagination">
-                <div class='text-center'>
-				    		  <%= paginate(@jobs) %>
-                </div>
-				    	</div>
-				    </div>
+            <div role="tabpanel" class="tab-pane" id="faq">
+              <br />
+
+              <p class="well text-center">
+                Em breve...
+              </p>
+            </div>
 				  </div>
 				</div>
 
