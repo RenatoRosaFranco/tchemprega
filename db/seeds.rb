@@ -54,6 +54,21 @@ realtime = Benchmark.realtime do
     ]
   )
 
+  # Deficiency
+  # @implemented
+  Deficiency.destroy_all
+  Deficiency.create(
+    [
+      { name: 'Auditiva' },
+      { name: 'Mental' },
+      { name: 'Visual' },
+      { name: 'Fala' },
+      { name: 'Psicossocial' },
+      { name: 'Física' },
+      { name: 'Reabilitados' }
+    ]
+  )
+
   # Salary
   # @implemented
   Salary.destroy_all

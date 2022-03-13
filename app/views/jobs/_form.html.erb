@@ -54,6 +54,13 @@
     { class: 'form-control', required: 'required' }) %>
   </div>
 
+  <div class="field">
+    <%= f.label :deficiency_id, 'Vaga para deficiente?' %>
+    <%= f.collection_select(:deficiency_id, Deficiency.all,
+    :id, :name, { prompt: 'Selecionar Deficiência'},
+    { class: 'form-control' }) %>
+  </div>
+
 	<div class="field">
 		<%= f.label :description, 'Descrição da Vaga' %>
 		<%= f.text_area :description, class: 'form-control',

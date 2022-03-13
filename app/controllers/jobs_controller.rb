@@ -186,6 +186,6 @@ class JobsController < ApplicationController
 					.permit(:title, :hiring_type, :modality, :period,
 									:description, :occupation_area_id, :location, :apply_path,
                   :hiring_type_id, :modality_id, :period_id, :state_id, 
-                  :salary_id, :city_id)
+                  :salary_id, :deficiency_id, :city_id)
 	end
 end

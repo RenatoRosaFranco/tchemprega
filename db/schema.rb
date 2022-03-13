@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_12_232418) do
+ActiveRecord::Schema.define(version: 2022_03_13_013250) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -79,6 +79,13 @@ ActiveRecord::Schema.define(version: 2022_03_12_232418) do
     t.index ["state_id"], name: "index_companies_on_state_id"
   end
 
+  create_table "deficiencies", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "hiring_types", force: :cascade do |t|
     t.string "name"
     t.string "slug"
@@ -104,8 +111,10 @@ ActiveRecord::Schema.define(version: 2022_03_12_232418) do
     t.integer "hiring_type_id"
     t.integer "period_id"
     t.integer "salary_id"
+    t.integer "deficiency_id"
     t.index ["city_id"], name: "index_jobs_on_city_id"
     t.index ["company_id"], name: "index_jobs_on_company_id"
+    t.index ["deficiency_id"], name: "index_jobs_on_deficiency_id"
     t.index ["hiring_type_id"], name: "index_jobs_on_hiring_type_id"
     t.index ["modality_id"], name: "index_jobs_on_modality_id"
     t.index ["occupation_area_id"], name: "index_jobs_on_occupation_area_id"
