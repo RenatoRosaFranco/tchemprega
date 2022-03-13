@@ -14,6 +14,7 @@ class Region < ApplicationRecord
 
 	include BRPopulate
 
+  # Attributes
 	self.table_name  = 'regions'
 	self.primary_key = 'id'
 
@@ -21,6 +22,7 @@ class Region < ApplicationRecord
   # @implemented
 	has_many :states, dependent: :destroy
 
+  # .populate
 	def self.populate
 		BRPopulate.populate
 	end

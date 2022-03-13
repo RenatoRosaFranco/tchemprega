@@ -26,6 +26,7 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged]
 
+  # Attributes
   self.table_name  = 'users'
   self.primary_key = 'id'
 

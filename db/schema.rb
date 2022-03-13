@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_12_160313) do
+ActiveRecord::Schema.define(version: 2022_03_12_232418) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -79,11 +79,15 @@ ActiveRecord::Schema.define(version: 2022_03_12_160313) do
     t.index ["state_id"], name: "index_companies_on_state_id"
   end
 
+  create_table "hiring_types", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string "title"
-    t.integer "hiring_type"
-    t.integer "period"
-    t.integer "modality"
     t.text "description"
     t.string "apply_path"
     t.integer "company_id"
@@ -96,9 +100,17 @@ ActiveRecord::Schema.define(version: 2022_03_12_160313) do
     t.integer "occupation_area_id"
     t.integer "state_id"
     t.integer "city_id"
+    t.integer "modality_id"
+    t.integer "hiring_type_id"
+    t.integer "period_id"
+    t.integer "salary_id"
     t.index ["city_id"], name: "index_jobs_on_city_id"
     t.index ["company_id"], name: "index_jobs_on_company_id"
+    t.index ["hiring_type_id"], name: "index_jobs_on_hiring_type_id"
+    t.index ["modality_id"], name: "index_jobs_on_modality_id"
     t.index ["occupation_area_id"], name: "index_jobs_on_occupation_area_id"
+    t.index ["period_id"], name: "index_jobs_on_period_id"
+    t.index ["salary_id"], name: "index_jobs_on_salary_id"
     t.index ["state_id"], name: "index_jobs_on_state_id"
   end
 
@@ -106,6 +118,13 @@ ActiveRecord::Schema.define(version: 2022_03_12_160313) do
     t.string "logo"
     t.string "name"
     t.string "external_link"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "modalities", force: :cascade do |t|
+    t.string "name"
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -127,11 +146,25 @@ ActiveRecord::Schema.define(version: 2022_03_12_160313) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "periods", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "regions", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+  end
+
+  create_table "salaries", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "states", force: :cascade do |t|

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: occupation_areas
+# Table name: hiring_types
 #
 #  id         :integer          not null, primary key
 #  name       :string
@@ -8,23 +8,21 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class OccupationArea < ApplicationRecord
-	extend FriendlyId
-	friendly_id :name, use: [:slugged]
+class HiringType < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: [:slugged]
 
   # Attributes
-	self.table_name  = 'occupation_areas'
-	self.primary_key = 'id'
+  self.table_name  = 'hiring_types'
+  self.primary_key = 'id'
 
   # Relationships
-  # @implemented
-  has_many :jobs,  dependent: :destroy
+  has_many :jobs, dependent: :destroy
 
   # Validation
-  # @implemented
   validates :name,
             presence: true,
-            uniqueness: false,
+            uniqueness: true,
             allow_blank: false,
-            length: { minimum: 3, maximum: 30 }
+            length: { minimum: 2, maximum: 30 }
 end

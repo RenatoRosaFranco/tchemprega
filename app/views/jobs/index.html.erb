@@ -17,12 +17,13 @@
                 <i class="fa-solid fa-angle-right"></i>
                 Refinar por cidade</h4>
                 <ul class='list-unstyled'>
-                  <% City.available_cities.each do |city| %>
+                  <% City.available_cities
+                    .limit(8).each do |city| %>
                   <li>
                     <%= link_to '' do %>
                       <%= city.name %> 
                       <span class='bold'>
-                        (<%= rand(100) %>)
+                        (<%= city.jobs.count %>)
                       </span>
                     <% end %>
                   </li>
@@ -41,12 +42,63 @@
                 <i class="fa-solid fa-angle-right"></i>
                 Refinar por Áreas de atuação</h4>
                 <ul class='list-unstyled'>
-                  <% City.available_cities.each do |city| %>
+                  <% OccupationArea.all
+                    .limit(6).each do |area| %>
                   <li>
                     <%= link_to '' do %>
-                      <%= city.name %> 
+                      <%= area.name %> 
                       <span class='bold'>
-                        (<%= rand(100) %>)
+                        (<%= area.jobs.count %>)
+                      </span>
+                    <% end %>
+                  </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class='panel panel-default'>
+              <div class='panel-body'>
+                <h4 class='bold'>
+                <i class="fa-solid fa-angle-right"></i>
+                Refinar por Modalidade</h4>
+                <ul class='list-unstyled'>
+                  <% Modality.all
+                    .limit(6).each do |modality| %>
+                  <li>
+                    <%= link_to '' do %>
+                      <%= modality.name %> 
+                      <span class='bold'>
+                        (<%= modality.jobs.count %>)
+                      </span>
+                    <% end %>
+                  </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class='panel panel-default'>
+              <div class='panel-body'>
+                <h4 class='bold'>
+                <i class="fa-solid fa-angle-right"></i>
+                Refinar por periodo</h4>
+                <ul class='list-unstyled'>
+                  <% Period.all
+                    .limit(6).each do |period| %>
+                  <li>
+                    <%= link_to '' do %>
+                      <%= period.name %> 
+                      <span class='bold'>
+                        (<%= period.jobs.count %>)
                       </span>
                     <% end %>
                   </li>
@@ -65,12 +117,13 @@
                 <i class="fa-solid fa-angle-right"></i> 
                 Refinar por Tipo de contratação</h4>
                 <ul class='list-unstyled'>
-                  <% City.available_cities.each do |city| %>
+                  <% HiringType.all
+                    .limit(6).each do |type| %>
                   <li>
                     <%= link_to '' do %>
-                      <%= city.name %> 
+                      <%= type.name %> 
                       <span class='bold'>
-                        (<%= rand(100) %>)
+                        (<%= type.jobs.count %>)
                       </span>
                     <% end %>
                   </li>

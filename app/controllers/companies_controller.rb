@@ -32,6 +32,7 @@ class CompaniesController < ApplicationController
 	def search
 		@query 		 = Company.ransack(params[:query])
 		@companies = @query.result(distinct: true)
+                       .includes(:state, :city)
 								       .order(created_at: :asc)
 								       .page(params[:page])
 								       .per(21)

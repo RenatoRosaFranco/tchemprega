@@ -10,7 +10,8 @@
           <div class='col-md-10 col-md-offset-1'>
           	<div class="panel panel-default" id='jobSearch-block'>
           		<div class="panel-body">
-          			<div class="col-md-5">
+          			
+                <div class="col-md-5">
           				<div class='input-group'>
           					<div class='input-group-addon'>
           						<i class="fa-solid fa-hashtag"></i>
@@ -19,18 +20,19 @@
           					placeholder: 'Nome da Empresa', autocomplete: 'off' %>
           				</div>
           			</div>
-          			<div class="col-md-5">
+          			
+                <div class="col-md-5">
           				<div class='input-group'>
           					<div class='input-group-addon'>
           						<i class="fa-solid fa-location-dot"></i>
           					</div>
-          					<%= f.search_field :location_cont, class: 'form-control',
+          					<%= f.search_field :location_or_state_name_or_city_name_cont, class: 'form-control',
           					placeholder: 'Local', autocomplete: 'off' %>
           				</div>
           			</div>
+
           			<div class="col-md-2">
-          				<%= f.submit 'Buscar', class: 'btn btn-default btn-lg top',
-          				style: 'width: 100%;' %>
+          				<%= f.submit 'Buscar', class: 'btn btn-default btn-lg top full-width' %>
           			</div>
           		</div>
           	</div>

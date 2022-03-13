@@ -208,6 +208,14 @@ footer {
     padding: 8px;
     position: relative;
     font-size: 22px;
+    transition: 0.5s;
+
+    &:hover, &.over {
+      position: relative;
+      background-color: #EEE;
+      transition: 0.5s;
+      color: #FFF;
+    }
   }
 }
 
@@ -405,6 +413,11 @@ footer {
     position: relative;
     margin-top: 40px;
   }
+}
+
+.full-width {
+  position: relative;
+  width: 100%;
 }
 
 // Pagination

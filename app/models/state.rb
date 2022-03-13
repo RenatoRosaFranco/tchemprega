@@ -18,6 +18,7 @@ class State < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged]
 
+  # Attributes
   self.table_name  = 'states'
   self.primary_key = 'id'
 

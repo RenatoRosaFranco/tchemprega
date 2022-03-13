@@ -7,7 +7,7 @@
 
 			<ul>
 				<%= job.errors.full_messages.each do |msg| %>
-				  <li><%= error %></li>
+				  <li><%= msg %></li>
 				<% end %>
 			</ul>
 		</div>
@@ -20,42 +20,39 @@
 	</div>
 
 	<div class="field">
-		<%= f.label :hiring_type, 'Tipo de Contratação' %>
-		<%= f.select(:hiring_type, {
-      'CLT' => 'CLT',
-      'PJ' => 'PJ',
-      'Temporário' => 'Temporário',
-      'Freelancer' => 'Freelancer'
-		}, 
-		{ prompt: 'Selecionar Tipo de contratação' },
+		<%= f.label :hiring_type_id, 'Tipo de Contratação' %>
+		<%= f.collection_select(:hiring_type_id, HiringType.order(:name), 
+      :id, :name, { prompt: 'Selecionar Tipo de contratação' },
 		{ class: 'form-control', required: 'required'}) %>
 	</div>
 
 	<div class="field">
-		<%= f.label :modality, 'Modalidade' %>
-		<%= f.select(:modality, {
-      'Presencial' => 'Presencial',
-      'Remoto' 		 => 'Remoto'
-		}, 
-		{ prompt: 'Selecionar Modalidade' },
+		<%= f.label :modality_id, 'Modalidade' %>
+		<%= f.collection_select(:modality_id, Modality.order(:name), 
+    :id, :name, { prompt: 'Selecionar Modalidade' },
 		{ class: 'form-control', required: 'required'}) %>
 	</div>
 
 	<div class="field">
-		<%= f.label :period, 'Periodo' %>
-		<%= f.select(:period, {
-      'Tempo Integral' => 'Integral',
-      'Meio Periodo'   => 'Parcial'
-		}, 
-		{ prompt: 'Selecionar Modalidade' },
+		<%= f.label :period_id, 'Periodo' %>
+		<%= f.collection_select(:period_id, Period.order(:name), 
+		:id, :name, { prompt: 'Selecionar Modalidade' },
 		{ class: 'form-control', required: 'required'}) %>
 	</div>
 
 	<div class="field">
 		<%= f.label :occupation_area_id, 'Área de Ocupação' %>
-		<%= f.collection_select(:occupation_area_id, OccupationArea.all, :id, :name,
-		{ prompt: 'Selecionar Área de Ocupação' }, { class: 'form-control', required: 'required' }) %>
+		<%= f.collection_select(:occupation_area_id, OccupationArea.all,
+    :id, :name, { prompt: 'Selecionar Área de Ocupação' }, 
+    { class: 'form-control', required: 'required' }) %>
 	</div>
+
+  <div class="field">
+    <%= f.label :salary_id, 'Faixa Salarial' %>
+    <%= f.collection_select(:salary_id, Salary.all,
+    :id, :name, { prompt: 'Selecionar Faixa Salarial'},
+    { class: 'form-control', required: 'required' }) %>
+  </div>
 
 	<div class="field">
 		<%= f.label :description, 'Descrição da Vaga' %>
@@ -72,26 +69,14 @@
 
   <div class="field">
     <%= f.label :state_id, 'Estado' %>
-    <%= f.collection_select(:state_id, State.where(name: 'Rio Grande do Sul'), :id, :name,
-    { prompt: 'Selecionar Estado' }, { class: 'form-control', required: 'required' }) %>
+    <%= f.collection_select(:state_id, State.where(name: 'Rio Grande do Sul'), 
+    :id, :name, { prompt: 'Selecionar Estado' }, { class: 'form-control', 
+    required: 'required' }) %>
   </div>
 
   <div class="field">
     <%= f.label :city_id, 'Cidade' %>
-    <%= f.collection_select(:city_id,City.where(name: 
-      [
-        'São Borja', 
-        'Itaqui', 
-        'Uruguaiana', 
-        'Santo Ângelo', 
-        'São Luiz Gonzaga', 
-        'Santiago', 
-        'Santa Maria',
-        'Jaguari',
-        'Garruchos',
-        'Maçambara'
-      ], 
-    state_id: 23).order(:name), :id, :name,
+    <%= f.collection_select(:city_id, City.available_cities.order(:name), :id, :name,
     { prompt: 'Selecionar Cidade' }, { class: 'form-control', required: 'required' }) %>
   </div>
 

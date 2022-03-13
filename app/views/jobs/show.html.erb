@@ -16,7 +16,8 @@
             <div class="text-center" style='padding: 20px;'>
               <h4 class='bold uppercase' 
                   style='margin-bottom: 20px; color: #838383;'>
-                  Compartilhe esta vaga</h4>
+               <i class="fa-solid fa-share-nodes"></i>
+               Compartilhe esta vaga</h4>
               <%= social_share_button_tag(@job.title) %>
             </div>
           </div>
@@ -28,7 +29,7 @@
 							<h4 class='bold'>Detalhes da vaga</h4>
               <hr />
 
-							<%= raw(@job.description) %>
+							<%= is_present?(raw(@job.description), 'Não Informado') %>
 						</div>
 
 						<div id="apply"><br>

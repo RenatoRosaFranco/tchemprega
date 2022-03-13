@@ -14,6 +14,7 @@ class Medium < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged]
 
+  # Attributes
   self.table_name = 'media'
   self.primary_key = 'id'
 end

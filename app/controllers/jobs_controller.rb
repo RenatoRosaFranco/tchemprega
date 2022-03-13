@@ -11,7 +11,7 @@ class JobsController < ApplicationController
 		@jobs  = Job.available
 							 .order(created_at: :desc)
 							 .page(params[:page])
-							 .per(7)
+							 .per(5)
 
 		respond_to do |format|
 			format.html
@@ -160,6 +160,7 @@ class JobsController < ApplicationController
 	def search
 		@query = Job.ransack(params[:query])
 		@jobs  = @query.result(distinct: true)
+              .includes(:state, :city)
 							.order(created_at: :desc)
 							.page(params[:page])
 							.per(20)
@@ -184,6 +185,7 @@ class JobsController < ApplicationController
 		params.require(:job)
 					.permit(:title, :hiring_type, :modality, :period,
 									:description, :occupation_area_id, :location, :apply_path,
-                  :state_id, :city_id)
+                  :hiring_type_id, :modality_id, :period_id, :state_id, 
+                  :salary_id, :city_id)
 	end
 end

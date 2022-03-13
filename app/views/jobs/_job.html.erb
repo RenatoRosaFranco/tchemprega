@@ -11,14 +11,14 @@
 				<ul class="list-unstyled list-inline">
 					<li>
 						<i class="fa-solid fa-location-pin"></i>
-						<%= job.modality %>
+						<%= job.modality.name %>
 					</li>
 					<li>
 						<i class="fa-solid fa-file"></i>
-						<%= job.hiring_type %></li>
+						<%= job.hiring_type.name %></li>
 					<li>
 						<i class="fa-solid fa-clock"></i>
-						<%= job.period %>		
+						<%= job.period.name %>		
 					</li>
 					<li>
 						<span class='badge'>
@@ -28,7 +28,10 @@
 					</li>
 				</ul>
 				<p>
-					<%= job.location %>		
+          <span class='bold'> 
+          <i class="fa-solid fa-wallet"></i>
+          <%= job.salary.name %> 
+          </span> / <%= job.location %>		
 				</p>
 			</div>
 

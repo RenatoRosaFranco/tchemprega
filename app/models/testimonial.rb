@@ -17,6 +17,10 @@ class Testimonial < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged]
 
+  # Attributes
+  self.table_name  = 'testimonials'
+  self.primary_key = 'id'
+
   # FileUpload
   # @implemented
   has_one_attached :avatar
