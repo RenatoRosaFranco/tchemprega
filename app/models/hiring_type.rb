@@ -17,9 +17,11 @@ class HiringType < ApplicationRecord
   self.primary_key = 'id'
 
   # Relationships
+  # @implemented
   has_many :jobs, dependent: :destroy
 
   # Validation
+  # @implemented
   validates :name,
             presence: true,
             uniqueness: true,

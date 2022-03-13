@@ -12,9 +12,16 @@ class Salary < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged]
 
+  # Attributes
   self.table_name  = 'salaries'
   self.primary_key = 'id'
 
+  # Relationships
+  # @implemented
+  has_many :jobs, dependent: :destroy
+
+  # Validations
+  # @implemented
   validates :name,
             presence: true,
             uniqueness: true,

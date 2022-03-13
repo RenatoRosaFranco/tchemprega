@@ -8,9 +8,13 @@
 #  updated_at :datetime         not null
 #
 class Alert < ApplicationRecord
+
+  # Attributes
   self.table_name  = 'alerts'
   self.primary_key = 'id'
 
+  # Validations
+  # @implemented
   validates :email,
             presence: true,
             uniqueness: false,

@@ -18,6 +18,7 @@ class City < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged]
 
+  # Attributes
   self.table_name  = 'cities'
   self.primary_key = 'id'
 
@@ -26,9 +27,9 @@ class City < ApplicationRecord
   has_many :jobs, dependent: :destroy
   has_many :companies, dependent: :destroy
   has_many :users, dependent: :destroy
-  
   belongs_to :state
 
+  # .available_cities
   def self.available_cities
     where(name: 
       [

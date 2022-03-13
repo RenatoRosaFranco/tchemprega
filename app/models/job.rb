@@ -38,6 +38,7 @@ class Job < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: [:slugged]
 
+  # Attributes
   self.table_name  = 'jobs'
   self.primary_key = 'id'
   
